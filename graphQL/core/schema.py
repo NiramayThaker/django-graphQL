@@ -16,5 +16,8 @@ class ClientType(DjangoObjectType):
 class Query(graphene.ObjectType):
     all_clients = graphene.List(ClientType)
 
+    def resolve_all_clients(root, info):
+        return Client.objects.all()
+
 
 schema = graphene.Schema(query=Query)
