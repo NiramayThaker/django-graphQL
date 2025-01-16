@@ -17,7 +17,8 @@ class Query(graphene.ObjectType):
     all_clients = graphene.List(ClientType)
 
     def resolve_all_clients(root, info):
-        return Client.objects.all()
+        # return Client.objects.all()
+        return Client.objects.filter(city='London')
 
 
 schema = graphene.Schema(query=Query)
